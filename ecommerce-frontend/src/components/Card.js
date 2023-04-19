@@ -1,4 +1,9 @@
-const Card = ({ cardData }) => {
+const Card = ({ cardData, cartNumber, setCartNumber, cartItem, setCartItem }) => {
+  const addToCart = () => {
+    setCartNumber(cartNumber + 1);
+    setCartItem(cartItem.concat(cardData))
+  }
+  
   return (
     <div className="card">
       <div className="card--image">
@@ -11,7 +16,7 @@ const Card = ({ cardData }) => {
           </h3>
           <p className="card--price">Rs. {cardData.price}</p>
         </div>
-        <div className="card--cart" title="Add to cart">
+        <div className="card--cart" title="Add to cart" onClick={addToCart}>
           <i className="fa-solid fa-cart-shopping"></i>
         </div>
       </div>

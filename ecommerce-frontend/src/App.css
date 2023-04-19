@@ -264,6 +264,65 @@ img{
   background-color: var(--blue-0);
 }
 
+.cart-cards{
+  margin: 2rem 0;
+}
+
+.link--db{
+  background-color: var(--blue-0);
+  margin-right: 2rem;
+}
+
+.total{
+  font-weight: 900;
+  font-size: 2rem;
+  background-color: var(--blue-0);
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  margin-top: 3rem;
+}
+
+.cart-card{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cart-card + .cart-card{
+  margin-top: 1rem;
+}
+
+.cart-card--content{
+  width: 65%;
+  padding: 1rem 0;
+}
+
+.cart-card--img{
+  width: 30%;
+}
+
+.cart-card--price{
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.description{
+  margin-top: 3rem;
+}
+
+.cart-card--btn{
+  background-color: red;
+  width: 50%;
+  padding: 0.55rem;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
 @media (min-width: 720px){
   .container{
     width: 80%;

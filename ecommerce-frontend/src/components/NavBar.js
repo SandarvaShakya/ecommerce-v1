@@ -1,4 +1,6 @@
-const NavBar = () => {
+import { Link } from 'react-router-dom'
+
+const NavBar = ({ cartNumber, setCartNumber }) => {
   return (
     <nav className="nav">
         <div className="container nav-flex">
@@ -9,8 +11,11 @@ const NavBar = () => {
                 <li className="nav-item">HOME</li>
             </ul>
             <div className="cart">
-                <i className="fa-solid fa-cart-shopping fa-2xl"></i>
-                <p className="item-number">0</p>
+                <Link to="/cart">
+                    {/* Cart */}
+                    <i className="fa-solid fa-cart-shopping fa-2xl"></i>
+                </Link>
+                <p className="item-number">{cartNumber}</p>
             </div>
         </div>
     </nav>

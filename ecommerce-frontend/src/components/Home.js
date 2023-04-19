@@ -19,55 +19,8 @@ const heroImages = [
       imgUrl: "./images/electronics.jpg"
     },
   ]
-  
-  const data = [
-    {
-      id: 1,
-      title: "Nike Shoes 1",
-      price: 2600,
-      vendor: "Nike",
-      categories: ["popular", "clothing", "shoes"],
-      imgUrl: "https://i.imgur.com/FPDfr1e.png",
-      stock: 10,
-      date: new Date(),
-      description: "some description"
-    },  
-    {
-      id: 2,
-      title: "Nike Shoes 2",
-      price: 2600,
-      vendor: "Nike",
-      categories: ["popular", "clothing", "shoes"],
-      imgUrl: "https://i.imgur.com/FjvLVUT.png",
-      stock: 10,
-      date: new Date(),
-      description: "some description"
-    },  
-    {
-      id: 3,
-      title: "Nike Shoes 3",
-      price: 2600,
-      vendor: "Nike",
-      categories: ["clothing", "shoes"],
-      imgUrl: "https://i.imgur.com/TrxtFX0.png",
-      stock: 10,
-      date: new Date(),
-      description: "some description"
-    },  
-    {
-      id: 4,
-      title: "Nike Shoes 4",
-      price: 2600,
-      vendor: "Nike",
-      categories: ["clothing", "shoes"],
-      imgUrl: "https://i.imgur.com/TrxtFX0.png",
-      stock: 10,
-      date: new Date(),
-      description: "some description"
-    },
-  ]
 
-const Home = () => {
+const Home = ({cartItem, setCartItem, cartNumber, setCartNumber}) => {
     const [currentImg, setCurrentImg] = useState(0)
     const [cardData, setCardData] = useState([]);
     const [tempData, setTempData] = useState([]);
@@ -154,7 +107,10 @@ const Home = () => {
   
   return (
     <div className='wrapper'>
-        <NavBar />
+        <NavBar 
+          cartNumber={cartNumber}
+          setCartNumber={setCartNumber}
+        />
         <div className="hero-section">
             <div className="hero-content">
                 <i className="fa-solid fa-arrow-left" onClick={goLeft}></i>
@@ -179,8 +135,12 @@ const Home = () => {
                 <div className="cards">
                     {tempData.map(data => {
                     return <Card
-                        key = {data.id}
-                        cardData = {data}
+                      key = {data.id}
+                      cardData = {data}
+                      cartNumber={cartNumber}
+                      setCartNumber={setCartNumber}
+                      cartItem={cartItem}
+                      setCartItem={setCartItem}
                     />
                     })}
                 </div>
