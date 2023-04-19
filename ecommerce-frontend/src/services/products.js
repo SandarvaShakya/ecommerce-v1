@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/supplier/products'
+const baseUrl = 'https://ecommerce-sss.vercel.app/api/supplier/products'
 
 const getAll = () => {
     const request = axios.get(baseUrl)
