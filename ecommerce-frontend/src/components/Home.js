@@ -21,89 +21,90 @@ const heroImages = [
   ]
 
 const Home = ({cartItem, setCartItem, cartNumber, setCartNumber}) => {
-    const [currentImg, setCurrentImg] = useState(0)
-    const [cardData, setCardData] = useState([]);
-    const [tempData, setTempData] = useState([]);
-  
-    /***
-     * changes hero image every 5 second
-     */
-    useEffect(() => {
-      const timer = setTimeout(()=>{
-        if(currentImg === 2){
-          setCurrentImg(0)
-        }else{
-          setCurrentImg(currentImg+1)
-        }
-      }, 5000)
-      return () => clearTimeout(timer)
-    }, [currentImg])
+  const [currentImg, setCurrentImg] = useState(0)
+  const [cardData, setCardData] = useState([]);
+  const [tempData, setTempData] = useState([]);
 
-    useEffect(() => {
-      productService
-        .getAll()
-        .then(initialProduct => {
-          setCardData(initialProduct)
-          setTempData(initialProduct)
-        })
-    }, [])
-  
-    /***
-     * function to shift the hero image to right
-     */
-    const goRight = () => {
+  /***
+   * changes hero image every 5 second
+   */
+  useEffect(() => {
+    const timer = setTimeout(()=>{
       if(currentImg === 2){
         setCurrentImg(0)
       }else{
-        setCurrentImg(currentImg + 1)
+        setCurrentImg(currentImg+1)
       }
+    }, 5000)
+    return () => clearTimeout(timer)
+  }, [currentImg])
+
+  //fetch all data from server
+  useEffect(() => {
+    productService
+      .getAll()
+      .then(initialProduct => {
+        setCardData(initialProduct)
+        setTempData(initialProduct)
+      })
+  }, [])
+
+  /***
+   * function to shift the hero image to right
+   */
+  const goRight = () => {
+    if(currentImg === 2){
+      setCurrentImg(0)
+    }else{
+      setCurrentImg(currentImg + 1)
     }
-  
-    /***
-     * function to shift the hero image to left
-     */
-    const goLeft = () => {
-      if(currentImg === 0){
-        setCurrentImg(2)
-      }else{
-        setCurrentImg(currentImg - 1)
-      }
+  }
+
+  /***
+   * function to shift the hero image to left
+   */
+  const goLeft = () => {
+    if(currentImg === 0){
+      setCurrentImg(2)
+    }else{
+      setCurrentImg(currentImg - 1)
     }
-  
-    /***
-     * function to filter popular items
-     */
-    const showPopular = () => {
-      const popular = cardData.filter(data => data.categories.includes("popular") && data);
-      setTempData(popular)
-      console.log("Popular items: ", popular);
-    }
-  
-    /***
-     * function to show all items
-     */
-    const showAll = () => {
-      setTempData(cardData);
-      console.log("All items: ", cardData);
-    }
-  
-    /***
-     * function to filter electronic items
-     */
-    const showElectronics = () => {
-      const electronics = cardData.filter(data => data.categories.includes("electronics") && data);
-      setTempData(electronics)
-      console.log("Electronics items: ", electronics);
-    }
-  
-    /***
-     * function to filter clothing items
-     */
-    const showClothing = () => {
-      const clothing = cardData.filter(data => data.categories.includes("clothing") && data);
-      setTempData(clothing)
-      console.log("Clothing items: ", clothing);
-    }
+  }
+
+  /***
+   * function to filter popular items
+   */
+  const showPopular = () => {
+    const popular = cardData.filter(data => data.categories.includes("popular") && data);
+    setTempData(popular)
+    console.log("Popular items: ", popular);
+  }
+
+  /***
+   * function to show all items
+   */
+  const showAll = () => {
+    setTempData(cardData);
+    console.log("All items: ", cardData);
+  }
+
+  /***
+   * function to filter electronic items
+   */
+  const showElectronics = () => {
+    const electronics = cardData.filter(data => data.categories.includes("electronics") && data);
+    setTempData(electronics)
+    console.log("Electronics items: ", electronics);
+  }
+
+  /***
+   * function to filter clothing items
+   */
+  const showClothing = () => {
+    const clothing = cardData.filter(data => data.categories.includes("clothing") && data);
+    setTempData(clothing)
+    console.log("Clothing items: ", clothing);
+  }
   
   return (
     <div className='wrapper'>

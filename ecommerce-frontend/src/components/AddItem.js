@@ -7,16 +7,24 @@ import Button from './Button'
 const categories = ['Clothing', 'Electronics', 'Shoes']
 
 const AddItem = () => {
+    //title of product
     const [title, setTitle] = useState('');
+    //price of product
     const [price, setPrice] = useState(0);
+    //vendor of product
     const [vendor, setVendor] = useState('');
+    //categories of product
     const [checkedCategories, setCheckedCategories] = useState([])
+    //image of product
     const [imgUrl, setImgUrl] = useState('')
+    //stock of product
     const [stock, setStock] = useState(0)
+    //description of product
     const [description, setDescription] = useState('')
+    //for preview shown or not shown
     const [previewView, setPreviewView] = useState(true);
 
-    const [data, setData] = useState([])
+    //product add nessage
     const [message, setMessage] = useState('')
 
     // adds new product
@@ -37,7 +45,6 @@ const AddItem = () => {
         productService
         .create(productObject)
         .then(returnedProduct => {
-            setData(data.concat(returnedProduct))
             setTitle('')
             setPrice(0)
             setVendor('')
@@ -45,7 +52,7 @@ const AddItem = () => {
             setImgUrl('')
             setStock(0)
             setDescription('')
-            setMessage('Product Added Successfully')
+            setMessage('Product Successfully Added.')
             setTimeout(() => {
                 setMessage(null)
             }, 5000)
@@ -102,11 +109,12 @@ const AddItem = () => {
     const handlePreview = () => {
         setPreviewView(!previewView)
     }
+
     return (
         <div className="container add-item-container">
             <h1>Add Product</h1>
-            <Link to="/" className="link">
-                Go to Home
+            <Link to="/supplier/all-products" className="link">
+                See All Products
             </Link>
             <br />
             <br />
