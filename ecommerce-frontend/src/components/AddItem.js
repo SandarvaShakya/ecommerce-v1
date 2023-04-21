@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { useState } from "react";
+
 import productService from '../services/products'
+import Button from './Button'
 
 const categories = ['Clothing', 'Electronics', 'Shoes']
 
@@ -12,6 +14,7 @@ const AddItem = () => {
     const [imgUrl, setImgUrl] = useState('')
     const [stock, setStock] = useState(0)
     const [description, setDescription] = useState('')
+    const [previewView, setPreviewView] = useState(true);
 
     const [data, setData] = useState([])
     const [message, setMessage] = useState('')
@@ -95,13 +98,34 @@ const AddItem = () => {
         }
     }
 
+    //to show or disable preview
+    const handlePreview = () => {
+        setPreviewView(!previewView)
+    }
     return (
         <div className="container add-item-container">
             <h1>Add Product</h1>
             <Link to="/" className="link">
                 Go to Home
             </Link>
+            <br />
+            <br />
+            <Button text={previewView ? 'Hide Preview' : 'Show Preview'} onClick={handlePreview}/>
             {message && <p className="message">{message}</p>}
+            <div className={previewView ? "preview" : "preview disable-preview"}>
+                <div className="preview-img">
+                    <img src={imgUrl ? imgUrl : '/images/square.png'} alt={title} />
+                </div>
+                <div className="preview-content">
+                    <div className="preview--text">
+                        <h3 className="preview--title">{title ? title : 'Product Name'}</h3>
+                        <p className="preview--price">Rs. {price ? price : 'Product Price'}</p>
+                    </div>
+                    <div className="card--cart" title="Add to cart">
+                        <i className="fa-solid fa-cart-shopping"></i>
+                    </div>
+                </div>
+            </div>
             <form className="form" onSubmit={addItem}>
                 <div className="form--element">
                     <label htmlFor="title">Product Title</label>

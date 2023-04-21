@@ -20,7 +20,6 @@ const Card = ({ cardData, cartNumber, setCartNumber, cartItem, setCartItem }) =>
           <i className="fa-solid fa-cart-shopping"></i>
         </div>
       </div>
-      
     </div>
   )
 }

@@ -323,6 +323,10 @@ img{
   margin-top: 1rem;
 }
 
+.preview{
+  display: none;
+}
+
 @media (min-width: 720px){
   .container{
     width: 80%;
@@ -370,6 +374,10 @@ img{
     width: 30%;
   }
 
+  .card--content{
+    height: 20%;
+  }
+
   .card--image{
     height: 80%;
   }
@@ -387,5 +395,37 @@ img{
     position: fixed;
     top: 0;
     right: 100px;
+  }
+
+  .preview{
+    display: block;
+    border: 1px solid black;
+    overflow: hidden;
+    width: 20%;
+    border-radius: 8px;
+    position: fixed;
+    top: 60px;
+    right: 120px;
+    z-index: 10;
+    background-color: white;
+  }
+
+  .preview--img{
+    height: 80%;
+  }
+
+  .preview-content{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    padding: 1rem;
+  }
+
+  .preview--price{
+    font-size: 1.2rem;
+  }
+
+  .disable-preview{
+    display: none;
   }
 }
