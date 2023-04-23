@@ -50,10 +50,10 @@ app.post('/api/supplier/products/add-item', (request, response) =>{
 })
 
 //UPDATE
-app.put('/api/supplier/products/:id', (request, response) => {
+app.put('/api/supplier/products/:id', (request, response, next) => {
     const body = request.body
 
-    const product = new Product({
+    const product = {
         title: body.title,
         price: body.price,
         vendor: body.vendor,
@@ -62,15 +62,16 @@ app.put('/api/supplier/products/:id', (request, response) => {
         stock: body.stock,
         date: new Date().toISOString(),
         description: body.description
-    })
+    }
 
     Product.findByIdAndUpdate(request.params.id, product, { new: true })
         .then(updatedProduct => {
             response.json(updatedProduct)
         })
-        .catch(error => {
-            console.log('An error occured: ', error.message);
-        })
+        .catch(error => next(error))
+        // .catch(error => {
+        //     console.log('An error occured: ', error.message);
+        // })
 })
 
 //DELETE

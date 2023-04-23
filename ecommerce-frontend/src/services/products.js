@@ -6,6 +6,11 @@ const getAll = () => {
     return request.then(response => response.data)
 }
 
+const getOne = (id) => {
+  const request = axios.get(`${baseUrl}/${id}`)
+  return request.then(response => response.data)
+}
+
 const create = newObject => {
   const request = axios.post(`${baseUrl}/add-item`, newObject)
   return request.then(response => response.data)
@@ -22,4 +27,4 @@ const remove = (id) => {
 }
 
 // eslint-disable-next-line
-export default { getAll, create, update, remove }
+export default { getAll, getOne, create, update, remove }

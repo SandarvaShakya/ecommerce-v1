@@ -15,7 +15,7 @@ const ShowItem = () => {
           .then(initialProduct => {
             setData(initialProduct)
           })
-      }, [])
+    }, [])
 
       const handleDelete = (id) => {
         const item = data.find(item => item.id === id)
@@ -66,7 +66,9 @@ const ShowItem = () => {
                             })}
                         </ul>
                         <div className="buttons">
-                            <Button text="Update" />
+                            <Link to={`/supplier/update-product/${item.id}`} className="link">
+                                Update
+                            </Link>
                             <Button text="Delete" className="red-btn" onClick={() => handleDelete(item.id)}/>
                         </div>
                     </div>

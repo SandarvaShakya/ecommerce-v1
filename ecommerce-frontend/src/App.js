@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import AddItem from './components/AddItem';
 import ShowItem from './components/ShowItem';
+import UpdateItem from './components/UpdateItem';
 import Home from './components/Home';
 import Cart from './components/Cart';
 
@@ -29,6 +30,7 @@ const App = () => {
         setCartNumber={setCartNumber}
       />} />
       <Route path='/supplier/all-products' element={<ShowItem />} />
+      <Route path='/supplier/update-product/:id' element={<UpdateItem />} />
     </Routes>
   )
 }
