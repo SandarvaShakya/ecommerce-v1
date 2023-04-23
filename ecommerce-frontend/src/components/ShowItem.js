@@ -43,7 +43,7 @@ const ShowItem = () => {
         <div className="all-product">
             {data.map(item => {
                 return (
-                    <div className="all-product--card">
+                    <div className="all-product--card" key={item.id}>
                     <div className="product-img">
                         <img src={item.imgUrl} alt="" />
                     </div>
@@ -59,9 +59,9 @@ const ShowItem = () => {
                         <p className="vendor">Vendor: {item.vendor}</p>
                         <h4 className="category--title">Categories</h4>
                         <ul className="product--categories">
-                            {item.categories.map(category => {
+                            {item.categories.map((category, index) => {
                                 return (
-                                    <li>{category}</li>
+                                    <li key={index}>{category}</li>
                                 )
                             })}
                         </ul>
