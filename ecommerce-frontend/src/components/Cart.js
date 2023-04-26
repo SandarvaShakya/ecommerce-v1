@@ -34,10 +34,10 @@ const Cart = ({cartItem, setCartItem, cartNumber, setCartNumber}) => {
                     )
                 })}
             </div>
-            <Link to="/" className="link link--db">
+            <Link to="/home" className="link link--db">
                 Checkout
             </Link>
-            <Link to="/" className="link">
+            <Link to="/home" className="link">
                 Return Home
             </Link>
         </div>
