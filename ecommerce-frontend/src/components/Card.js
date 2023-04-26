@@ -7,7 +7,7 @@ const Card = ({ cardData, cartNumber, setCartNumber, cartItem, setCartItem }) =>
   return (
     <div className="card">
       <div className="card--image">
-        <img src={cardData.imgUrl} alt={cardData.title} />
+        <img src={cardData.imgUrl} alt={cardData.title} loading="lazy"/>
       </div>
       <div className="card--content">
         <div className="card--text">

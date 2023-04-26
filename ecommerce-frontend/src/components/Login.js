@@ -8,8 +8,9 @@ const Login = ({ setLogin }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("Submitted");
     setLogin(true);
+    localStorage.setItem('login', true)
+    console.log("Submitted");
     navigate('/home')
   }
 

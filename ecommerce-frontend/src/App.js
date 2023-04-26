@@ -23,7 +23,7 @@ const App = () => {
         setLogin={setLogin}
       />} />
       {
-        login ? 
+        localStorage.getItem('login') ?  
         [
           <Route path="/home" element={<Home 
               cartItem={cartItem} 
